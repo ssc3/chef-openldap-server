@@ -45,6 +45,3 @@ template '/etc/default/slapd' do
   notifies :reload, "service[slapd]"
 end
 
-service 'slapd' do
-  action [:start]
-end

@@ -16,3 +16,4 @@ default['openldap-server'][:root_user_attr] = "cn=admin"
 default['openldap-server'][:db_dir] = '/var/lib/ldap'
 
 default['openldap-server'][:db_ldif] = 'db.ldif.erb'
+default['openldap-server'][:db_update_ldif] = 'db_update.ldif.erb'

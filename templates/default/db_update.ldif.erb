@@ -1,0 +1,24 @@
+
+dn: ou=People,<%= node['openldap-server'][:domain_suffix] %>
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,<%= node['openldap-server'][:domain_suffix] %>
+objectClass: organizationalUnit
+ou: Groups
+
+dn: ou=Services,<%= node['openldap-server'][:domain_suffix] %>
+objectClass: organizationalUnit
+ou: Services
+
+# dortiz, Test User
+dn: uid=dortiz,ou=People,<%= node['openldap-server'][:domain_suffix] %>
+cn: David Ortiz
+objectClass: inetOrgPerson
+sn: Ortiz
+givenName: David
+userPassword:: e1NTSEF9akFlV3Nva1pyVXAvWmRTQkQ4WkpSQnd4UFUyS1N6L1M=
+mail: bigpapi@example.com
+uid: dortiz
+
+
