@@ -9,6 +9,7 @@ default['openldap-server'][:default_config][:slapd_sentinel_file] = '/etc/ldap/n
 default['openldap-server'][:default_config][:slapd_kerb_file] = '/etc/krb5.keytab' # KRB_KTNAME
 default['openldap-server'][:default_config][:slapd_options] = nil # SLAPD_OPTIONS
 
+default['openldap-server'][:no_configuration] = 'true'
 default['openldap-server'][:domain] = 'default.com'
 default['openldap-server'][:rootpw] = '{SSHA}0NDdeikW2csDSgF4+It1SLhpJYw3d6+z'
 default['openldap-server'][:root_user_attr] = "cn=admin"

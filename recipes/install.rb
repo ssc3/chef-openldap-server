@@ -1,6 +1,7 @@
+
 package 'slapd' do
   action :install
-  response_file 'slapd.seed'
+  response_file 'slapd.seed.erb'
   ignore_failure true
   notifies :enable, 'service[slapd]'
 end
@@ -9,6 +10,7 @@ cookbook_file 'slapd_config' do
   backup false
   source 'slapd.tar.gz'
   path '/tmp/slapd.tar.gz'
+  only_if { node['openldap-server']['no_configuration'] == 'true' }
 end
 
 execute 'place_base_slapd_config' do
@@ -16,6 +18,7 @@ execute 'place_base_slapd_config' do
   creates '/etc/ldap/slap.d'
   creates '/etc/ldap/slapd.d'
   notifies :start, 'service[slapd]', :immediately
+  only_if { File.exists?("/tmp/slapd.tar.gz") }
 end
 
 package 'ldap-utils' do
@@ -40,4 +43,8 @@ template '/etc/default/slapd' do
     slapd_options:  node['openldap-server'][:default_config][:slapd_options]
   })
   notifies :reload, "service[slapd]"
+end
+
+service 'slapd' do
+  action [:start]
 end
