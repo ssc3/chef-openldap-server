@@ -24,7 +24,6 @@ end
 
 execute "update_db" do
   command "ldapadd -x -c -D #{node['openldap-server'][:rootDN]} -w #{node['openldap-server'][:rootpw]} -v -f /tmp/db_update.ldif"
-  creates '/etc/ldap/slapd.d/cn=config/olcDatabase={2}hdb.ldif'
   action :nothing
   returns [0,68]
 end
