@@ -7,7 +7,7 @@ slapd	slapd/password_mismatch	note
 slapd	slapd/invalid_config	boolean	true
 slapd	shared/organization	string	<%= node['openldap-server']['domain'] %>
 slapd	slapd/upgrade_slapcat_failure	error
-slapd	slapd/no_configuration	boolean	<%= node['openldap-server']['no_configuration'] %>
+slapd	slapd/no_configuration	boolean	<%= if node['openldap-server']['no_configuration'] : 'true' ? 'false' %>
 slapd	slapd/move_old_database	boolean	true
 slapd	slapd/dump_database_destdir	string	/var/backups/slapd-VERSION
 # Do you want the database to be removed when slapd is purged?

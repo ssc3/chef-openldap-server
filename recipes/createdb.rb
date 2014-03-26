@@ -3,7 +3,7 @@ template '/tmp/db.ldif' do
   owner 'root'
   group 'root'
   mode '0644'
-  only_if { node['openldap-server']['no_configuration'] == 'true' }
+  only_if node['openldap-server']['no_configuration']
   notifies :run, 'execute[create_db]'
 end
 
@@ -12,7 +12,7 @@ template '/tmp/db_update.ldif' do
   owner 'root'
   group 'root'
   mode '0644'
-  only_if { node['openldap-server']['no_configuration'] == 'false' }
+  not_if node['openldap-server']['no_configuration']
   notifies :run, 'execute[update_db]'
 end
 
